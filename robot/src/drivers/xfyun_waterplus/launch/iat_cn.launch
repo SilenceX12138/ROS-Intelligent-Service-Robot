@@ -1,0 +1,7 @@
+<launch>
+
+    <node pkg="xfyun_waterplus" type="iat_node" name="xfyun_iat_node" output="screen">
+        <param name="cn" type="bool" value="true"/> 
+    </node>
+
+</launch>

@@ -1,0 +1,16 @@
+<library path="lib/libwaterplus_map_tools">
+  <class name="rviz/AddWaypoint"
+         type="rviz::AddWaypointTool"
+         base_class_type="rviz::Tool">
+    <description>
+      Tool for adding waypoints on the ground plane in rviz.
+    </description>
+  </class>
+  <class name="rviz/AddCharger"
+         type="rviz::AddChargerTool"
+         base_class_type="rviz::Tool">
+    <description>
+      Tool for adding chargers on the ground plane in rviz.
+    </description>
+  </class>
+</library>

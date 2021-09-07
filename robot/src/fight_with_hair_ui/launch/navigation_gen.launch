@@ -1,0 +1,15 @@
+
+<!--add by cjb-->
+
+<launch>
+<!-- 默认地址 -->
+    <arg name="map_file" default="$(find navi)/maps/map.yaml"/>
+    <arg name="waypoint_name" default="$(find navi)/waypoints/waypoints.xml"/>
+    <include file="$(find navi)/launch/navi_gen.launch">
+    <!--使用的地图参数-->
+    <arg name="map_file" value="$(arg map_file)"/>
+    <arg name="waypoint_name" value="$(arg waypoint_name)"/>
+    </include>
+
+</launch>
+

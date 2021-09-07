@@ -1,0 +1,17 @@
+<launch>
+
+    <node pkg="xfyun_waterplus" type="iat_node" name="xfyun_iat_node" output="screen">
+        <param name="cn" type="bool" value="true"/> 
+    </node>
+    <node pkg="xfyun_waterplus" type="tts_node" name="xfyun_tts_node" /> 
+    <node pkg="xfyun_waterplus" type="wp_voice_cmd_cn" name="wp_voice_cmd_cn" output="screen"/>
+
+    <!-- Run sound_play -->
+    <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+
+    <!-- Run wpb_home core -->
+    <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
+        <param name="serial_port" type="string" value="/dev/ftdi"/> 
+    </node>
+
+</launch>

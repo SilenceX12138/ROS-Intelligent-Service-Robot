@@ -1,0 +1,35 @@
+<package>
+  <name>tf2_web_republisher</name>
+  <version>0.3.2</version>
+  <description>Republishing of Selected TFs</description>
+
+  <maintainer email="rctoris@wpi.edu">Russell Toris</maintainer>
+  <author email="jkammerl@willowgarage.com">Julius Kammer</author>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/tf2_web_republisher</url>
+  <url type="bugtracker">https://github.com/RobotWebTools/tf2_web_republisher/issues</url>
+  <url type="repository">https://github.com/RobotWebTools/tf2_web_republisher</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>actionlib</build_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <run_depend>actionlib</run_depend>
+  <run_depend>actionlib_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf2_ros</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+  <test_depend>rospy</test_depend>
+  <test_depend>rostest</test_depend>
+</package>

@@ -1,0 +1,22 @@
+<launch>
+  
+  <!-- Run wpb_home core -->
+  <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
+        <param name="serial_port" type="string" value="/dev/ftdi"/> 
+        <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
+  </node>
+
+  <!-- Run xfyun IAT -->
+  <node pkg="xfyun_waterplus" type="iat_node" name="xfyun_iat_node" output="screen">
+        <param name="cn" type="bool" value="false"/>
+        <param name="start" type="bool" value="true"/>
+  </node>
+  <!-- Run xfyun TTS -->
+  <node pkg="xfyun_waterplus" type="tts_node" name="xfyun_tts_node" /> 
+  <!-- Run sound_play -->
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+
+  <!-- Run speech_recognition -->
+  <node pkg="wpb_home_apps" type="speech_recognition" name="speech_recognition" output="screen" />
+
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+
+<node name="fwh_follow_yz" pkg="fwh_follow" type="fwh_follow_yz" output="screen"/>
+
+</launch>

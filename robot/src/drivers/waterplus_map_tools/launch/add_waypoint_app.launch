@@ -1,0 +1,11 @@
+<launch>
+
+  <!-- Map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find wpr1_tutorials)/maps/map.yaml"/>
+  
+  <!-- Map tools  -->
+  <node pkg="waterplus_map_tools" type="wp_edit_node" name="wp_edit_node" output="screen">
+    <param name="load" type="string" value="/home/master/waypoints.xml"/> 
+  </node>
+
+</launch>

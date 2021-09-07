@@ -1,0 +1,15 @@
+<launch>
+
+    <!--- Run map tools -->
+    <include file="$(find waterplus_map_tools)/launch/wpb_home_nav_test.launch" />
+
+    <!--- Run entrance_detect -->
+    <node pkg="wpb_home_apps" type="entrance_detect" name="entrance_detect"/>
+
+    <!--- Run Path_plan -->
+    <node pkg="wpb_home_apps" type="path_plan" name="path_plan" output="screen"/>
+
+    <!-- Run sound_play -->
+    <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+
+</launch>

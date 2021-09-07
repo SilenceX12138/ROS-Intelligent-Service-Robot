@@ -1,0 +1,87 @@
+<launch>
+  <master auto="start"/>
+
+  <!-- 启动rrtlaunch文件 -->
+  <include file="$(find rrt_slam)/launch/simple.launch"/>  
+  <!-- gmaaping算法 -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+    <param name="base_frame" value="base_footprint"/>
+  </node>
+
+    <!-- 真机模拟使用 -->
+    <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
+        <param name="serial_port" type="string" value="/dev/ftdi"/>
+        <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
+    </node>
+
+    <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+        <param name="serial_port" type="string" value="/dev/rplidar"/>
+        <param name="serial_baudrate" type="int" value="115200"/>
+        <param name="frame_id" type="string" value="laser"/>
+        <param name="inverted" type="bool" value="false"/>
+        <param name="angle_compensate" type="bool" value="true"/>
+        <remap from="scan" to="scan_raw"/>
+    </node>
+    <!-- 雷达滤波 -->
+  <node pkg="slam" type="slam_lidar_filter" name="slam_lidar_filter">
+      <param name="pub_topic" value="/scan"/>
+  </node>
+
+
+    <!-- Map tools  -->
+    <arg name="waypoint_name" default="waypoints"/>
+    <node pkg="waterplus_map_tools" type="wp_manager" name="wp_manager" output="screen">
+        <param name="load" type="string" value="$(find navi)/waypoints/$(arg waypoint_name).xml"/>
+    </node>
+
+
+  <!--- Run AMCL -->
+  <!-- <include file="$(find navi)/nav_lidar/amcl_omni.launch" /> -->
+  <include file="$(find navi)/param/omni_amcl.launch" />
+
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+      <param name="footprint_padding" value="0.01" />
+      <param name="controller_frequency" value="5.0" />
+      <param name="controller_patience" value="3.0" />
+      <param name="oscillation_timeout" value="30.0" />
+      <param name="oscillation_distance" value="0.5" />
+      <param name="planner_patience" value="1" />
+      <param name="controller_patience" value="1" /> 
+      <param name="recovery_behavior_enabled" value="false" />
+      
+    <rosparam file="$(find rrt_slam)/para/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find rrt_slam)/para/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find rrt_slam)/para/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find rrt_slam)/para/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find rrt_slam)/para/base_local_planner_params.yaml" command="load" /> 
+
+      <param name="global_costmap/global_frame" value="/map"/>
+      <param name="global_costmap/robot_base_frame" value="/base_link"/>
+      <param name="global_costmap/laser_scan_sensor/sensor_frame" value="/laser"/>
+      <param name="global_costmap/laser_scan_sensor/topic" value="/laser"/>    
+      <param name="local_costmap/global_frame" value="/map"/>
+      <param name="local_costmap/robot_base_frame" value="/base_link"/>
+      <param name="local_costmap/laser_scan_sensor/sensor_frame" value="/laser"/>
+      <param name="local_costmap/laser_scan_sensor/topic" value="/laser"/>
+      <param name="local_costmap/obstacle_layer/laser_scan_sensor/topic" value="/laser"/>
+      <remap from="cmd_vel" to="cmd_vel"/>
+    </node>
+
+  <!-- RViz and TF tree -->
+
+  <arg name="model" default="$(find wpb_sim)/urdf/wpb_home.gazebo"/>
+  <arg name="gui" default="false" />
+  <arg name="scan_topic"  default="/fight_with_hair/slam/scan" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/> 
+
+
+  <arg name="rvizconfig" default="$(find navi)/rviz/rrt.rviz" />s
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+<!--  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />-->
+
+</launch>

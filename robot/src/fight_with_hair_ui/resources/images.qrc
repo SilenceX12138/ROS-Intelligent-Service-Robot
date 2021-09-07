@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/icon.png</file>
+        <file>images/robot.png</file>
+        <file>images/follow_robot.jpg</file>
+    </qresource>
+</RCC>

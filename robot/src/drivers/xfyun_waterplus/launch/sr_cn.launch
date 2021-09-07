@@ -1,0 +1,13 @@
+<launch>
+
+    <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+    <node pkg="xfyun_waterplus" type="recorder_wav_node" name="recorder_wav_node">
+        <param name="start" type="bool" value="false"/> 
+    </node>
+    <node pkg="xfyun_waterplus" type="wav_rate_node" name="wav_rate_node"/>
+    
+    <node pkg="xfyun_waterplus" type="iat_file" name="xfyun_iat_file" output="screen">
+        <param name="cn" type="bool" value="true"/> 
+    </node>
+
+</launch>

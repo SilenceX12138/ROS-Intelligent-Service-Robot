@@ -1,0 +1,30 @@
+<launch>
+
+    <!-- Run wpb_home core -->
+  <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
+    <param name="serial_port" type="string" value="/dev/ftdi"/> 
+    <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
+  </node>
+  <!-- Run lidar filter -->
+  <node pkg="slam" type="slam_lidar_filter" name="slam_lidar_filter">
+    <param name="pub_topic" value="/scan"/>
+  </node>
+
+  <!-- - Run Rplidar -->
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+    <param name="serial_port"         type="string" value="/dev/rplidar"/>  
+    <param name="serial_baudrate"     type="int"    value="115200"/>
+    <param name="frame_id"            type="string" value="laser"/>
+    <param name="inverted"            type="bool"   value="false"/>
+    <param name="angle_compensate"    type="bool"   value="true"/>
+    <remap from="scan" to="scan_raw"/>
+  </node>
+
+  <!-- js node -->
+  <node respawn="true" pkg="joy" type="joy_node" name="my_joy"></node>
+    <include file="$(find basic)/launch/basic_move.launch" />
+    <include file="$(find arm)/launch/arm_move.launch" />
+    <node pkg="user_listen" name="user_listen" type="user_listen" output="screen"/>
+    <node pkg="user_listen" name="keyboard_listen" type="keyboard_listen.py" output="screen"/>
+    
+</launch>

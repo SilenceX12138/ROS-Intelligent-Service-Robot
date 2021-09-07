@@ -1,0 +1,6 @@
+<launch>
+
+<node name="fwh_obj_detect" pkg="fwh_obj" type="fwh_obj_detect" output="screen"/>
+<node name="fwh_obj_grab" pkg="fwh_obj" type="fwh_obj_grab" output="screen"/>
+
+</launch>

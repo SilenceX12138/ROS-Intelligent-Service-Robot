@@ -1,0 +1,48 @@
+<!--整合机器人导航需要的节点的所有的launch-->
+<launch>
+  <!--启动gazebo仿真基本世界-->
+  <include file="$(find wpb_sim)/launch/wpb_simple.launch" />
+
+  <!-- Run lidar filter -->
+  <node pkg="wpb_home_bringup" type="wpb_home_lidar_filter" name="wpb_home_lidar_filter">
+    <param name="pub_topic" value="/scan"/>
+  </node>
+
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find navi)/maps/map.yaml"/>
+
+  <!-- Map tools  -->
+  <arg name="waypoint_name" default="waypoints"/>
+  <node pkg="waterplus_map_tools" type="wp_manager" name="wp_manager" output="screen">
+    <param name="load" type="string" value="$(find navi)/waypoints/$(arg waypoint_name).xml"/>
+  </node>
+  <!-- 在设置的导航点后开始巡航 -->
+  <!-- <node name="wp_nav_test" pkg="waterplus_map_tools" type="wp_nav_test"/> -->
+
+  <!--- Run AMCL -->
+  <!-- 定位收敛速度更快 -->
+  <include file="$(find navi)/param/omni_amcl.launch" />
+  <!-- <include file="$(find navi)/nav_lidar/amcl_omni.launch" /> -->
+
+  <!--- Run move base -->
+  <include file="$(find navi)/param/move_base.launch"/>
+
+  <!--启动自定义运动避障模块-->
+  <!-- <include file="$(find basic)/launch/basic_move.launch" /> -->
+
+  <!--启动rviz-->
+  <arg name="model" default="$(find navi)/urdf/wpb_home.urdf"/>
+  <arg name="gui" default="false" />
+  <arg name="rvizconfig" default="$(find navi)/rviz/nav.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+  <!--启动向我们自定义运动模块的转化节点-->
+  <node name="navi_adaptor" pkg="navi" type="navi_adaptor"/>
+
+</launch>

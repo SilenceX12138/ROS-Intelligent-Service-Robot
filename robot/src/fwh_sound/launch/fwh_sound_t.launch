@@ -1,0 +1,5 @@
+<launch>
+
+<node name="fwh_sound_yz" pkg="fwh_sound" type="fwh_sound_yz" output="screen"/>
+
+</launch>

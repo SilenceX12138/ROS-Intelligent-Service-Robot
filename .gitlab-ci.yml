@@ -1,0 +1,9 @@
+before_script:
+  - which python
+  - python --version
+  - pip install flake8 pep8-naming
+
+
+pep8:
+  script:
+    - flake8 ./robot/src/navi

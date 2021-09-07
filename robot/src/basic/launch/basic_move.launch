@@ -1,0 +1,9 @@
+<launch>
+    <rosparam file="$(find basic)/cfg/robot_move.cfg" command="load" />
+    <node pkg="basic" name="basic_move" type="basic_move" output='screen'>
+    </node>
+    <node pkg="basic" name="basic_avoidance" type="basic_avoidance" output='screen'>
+    </node>     
+    
+    
+</launch>

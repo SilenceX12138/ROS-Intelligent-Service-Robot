@@ -1,0 +1,9 @@
+#ABNF 1.0 GB2312;
+
+language zh-CN;
+
+root $main;
+
+$main = Follow | Stop | Wait;
+
+

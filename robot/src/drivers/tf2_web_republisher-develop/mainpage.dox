@@ -1,0 +1,6 @@
+/**
+\mainpage
+
+\b Republishing of Selected TFs
+This package republishes throttled and quantized TF messages to be transmitted to a rosbridge web-client.
+*/

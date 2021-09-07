@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>rosbridge_library</name>
+  <version>0.11.13</version>
+  <description>
+    The core rosbridge package, responsible for interpreting JSON and performing
+    the appropriate ROS action, like subscribe, publish, call service, and
+    interact with params.
+  </description>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rosbridge_library</url>
+  <url type="bugtracker">https://github.com/RobotWebTools/rosbridge_suite/issues</url>
+  <url type="repository">https://github.com/RobotWebTools/rosbridge_suite</url>
+
+  <author email="jonathan.c.mace@gmail.com">Jonathan Mace</author>
+  <maintainer email="rctoris@wpi.edu">Russell Toris</maintainer>
+  <maintainer email="jihoonlee.in@gmail.com">Jihoon Lee</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <build_depend condition="$ROS_PYTHON_VERSION == 2">python-future</build_depend>
+  <build_depend condition="$ROS_PYTHON_VERSION == 2">python-imaging</build_depend>
+  <build_depend condition="$ROS_PYTHON_VERSION == 3">python3-pil</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend condition="$ROS_PYTHON_VERSION == 2">python-bson</build_depend>
+  <build_depend condition="$ROS_PYTHON_VERSION == 3">python3-bson</build_depend>
+
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rosgraph</exec_depend>
+  <exec_depend>rosservice</exec_depend>
+  <exec_depend>rostopic</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-future</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-imaging</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-pil</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-bson</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-bson</exec_depend>
+
+  <test_depend>rostest</test_depend>
+  <test_depend>actionlib_msgs</test_depend>
+  <test_depend>diagnostic_msgs</test_depend>
+  <test_depend>nav_msgs</test_depend>
+  <test_depend>rospy_tutorials</test_depend>
+  <test_depend>sensor_msgs</test_depend>
+  <test_depend>std_srvs</test_depend>
+  <test_depend>stereo_msgs</test_depend>
+  <test_depend>tf2_msgs</test_depend>
+  <test_depend>trajectory_msgs</test_depend>
+  <test_depend>visualization_msgs</test_depend>
+</package>

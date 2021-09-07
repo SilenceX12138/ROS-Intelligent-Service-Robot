@@ -1,0 +1,22 @@
+<launch>
+  <node pkg="tf2_web_republisher" type="dummy_transform_publisher.py"
+        name="dummy1">
+    <param name="parent_frame" value="world" />
+    <param name="child_frame" value="foo" />
+    <param name="osc_rate" value="1.0" />
+    <param name="update_rate" value="60" />
+  </node>
+  <node pkg="tf2_web_republisher" type="dummy_transform_publisher.py"
+        name="dummy2">
+    <param name="parent_frame" value="world" />
+    <param name="child_frame" value="bar" />
+    <param name="osc_rate" value="2.0" />
+    <param name="update_rate" value="60" />
+  </node>
+  <node name="tf2_web_republisher"
+        pkg="tf2_web_republisher"
+        type="tf2_web_republisher" />
+  <test test-name="test_tf2_web_republisher"
+        pkg="tf2_web_republisher"
+        type="test_tf_web_republisher.py" />
+</launch>

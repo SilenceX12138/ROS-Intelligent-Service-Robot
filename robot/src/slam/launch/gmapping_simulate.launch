@@ -1,0 +1,34 @@
+<launch>
+  
+  <arg name="model" default="$(find wpb_sim)/urdf/wpb_home.gazebo"/>
+  <arg name="gui" default="false" />
+  <arg name="scan_topic"  default="/fight_with_hair/slam/scan" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+  <arg name="rvizconfig" default="$(find slam)/rviz/slam.rviz" />
+<!--  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <!--启动gmapping算法-->
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+    <param name="base_frame" value="base_footprint"/>
+  </node>
+
+  <!-- Run wpb_home core -->
+ <!-- <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
+    <param name="serial_port" type="string" value="/dev/ftdi"/> 
+    <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
+  </node>-->
+
+
+    
+  <!-- Run lidar filter -->
+<!--  <node pkg="slam" type="slam_lidar_filter" name="slam_lidar_filter">
+    <param name="pub_topic" value="/scan"/>
+  </node>-->
+
+
+
+</launch>

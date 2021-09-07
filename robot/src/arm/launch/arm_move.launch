@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="arm" name="arm_move" type="arm_move" output='screen'></node>
+</launch>
