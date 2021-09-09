@@ -1,22 +1,22 @@
 ## arm
 
-本软件包为机械臂移动arm模块，主要包括一个cpp源文件：
+This software package is a mobile arm module of a robotic arm, which mainly includes a cpp source file:
 
-- `arm_move.cpp`，机械臂移动模块
+-`arm_move.cpp`, robot arm movement module
 
-一个Msg：
+A Msg:
 
-* `armMsg.msg`，用户监听模块与arm_move模块交互的消息。
+* `armMsg.msg`, the user monitors the messages that the module interacts with the arm_move module.
 
-### 介绍
+### introduce
 
-- #### arm_move
+-#### arm_move
 
-  机械臂移动模块实时监听话题`/fight_with_hair/arm_move`的消息，从该话题中获取从用户监听类以及目标抓取类传递过来的机械臂运动指令，消息的类型为自定义的arm::armMsg类型。机械臂类对收到的机械臂运动指令进行底层硬件可接受的消息转换，将arm::armMsg消息类型转换为底层可接受的sensor_msgs::JointState类型。转化好的sensor_msgs:: JointState类型消息准备发送给底层的`/wpb_home/mani_ctrl`话题，供底层硬件相关节点接收.
+   The robot arm movement module monitors the message of the topic `/fight_with_hair/arm_move` in real time, and obtains the robot motion instructions from the user monitoring class and the target grabbing class from the topic. The message type is a custom arm::armMsg type . The robot arm class performs the message conversion acceptable to the underlying hardware on the received motion command of the robot arm, and converts the arm::armMsg message type to the sensor_msgs::JointState type acceptable to the bottom layer. The transformed sensor_msgs:: JointState type message is ready to be sent to the underlying `/wpb_home/mani_ctrl` topic for the underlying hardware related nodes to receive.
 
-### 使用方法
+### Instructions
 
-直接启动launch文件，即可开启基础移动部分的节点。
+Start the launch file directly to open the nodes of the basic mobile part.
 
 ```sh
 $ roslaunch arm arm_move.launch

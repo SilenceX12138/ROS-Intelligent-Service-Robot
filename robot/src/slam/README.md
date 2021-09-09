@@ -1,30 +1,29 @@
 # fight_with_hair_slam
 
-SLAM建图功能包，本包包含以下内容：
+SLAM mapping function package, this package contains the following contents:
 
 * **gmapping_demo**: gmapping SLAM
 
-### gmapping示例运行方法
+### How to run gmapping example
 
 ```sh
 $ roslaunch slam gmapping_simulate.launch
 ```
 
-操控小车移动，可以看到地图的建立
+Control the car to move, you can see the establishment of the map
 
-在建立地图完成之后，可以调用`map_server`服务保存建立的地图
+After the map is created, you can call the `map_server` service to save the created map
 
 ```sh
 $ rosrun map_server map_saver -f map
 ```
 
-`-f`参数决定保存地图的名称，地图保存形式为`map.yaml和map.pgm`形式保存路径为运行该命令行的路径
+The `-f` parameter determines the name of the saved map, the map save format is `map.yaml and map.pgm` The save path is the path to run the command line
 
-### gmapping真机运行方法
+### How to run gmapping on real machine
 
 ```sh
 $ roslaunch slam gmapping.launch
 ```
 
-在真实上机时，选择该方法，来运行建图模块
-
+In the real computer, select this method to run the mapping module

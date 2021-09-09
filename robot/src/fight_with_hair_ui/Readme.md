@@ -1,80 +1,79 @@
 # fight_with_hair_ui package
 
-## 概况
+## Overview
 
-* 前端功能包，打开前端功能可使用所有机器人功能
-* 通过qnode节点向各个话题传递前端消息，控制机器人各模块运动
+* Front-end function package, open the front-end function to use all robot functions
+* Pass front-end messages to various topics through the qnode node, and control the movement of each module of the robot
 
-## 使用方法
+## Instructions
 
-### 路径
+### Path
 
-* 将整个工程放在根目录下，注意不要改名
+* Put the entire project in the root directory, and be careful not to change the name
 
-### 启动
+### start up
 
-* 打开用户界面，显示主界面
+* Open the user interface and display the main interface
 
   ```shell
   roslaunch fight_with_hair_ui fight_with_hair_ui.launch
   ```
 
-  * 进行qnode初始化，打开roscore，打开仿真界面
+  * Perform qnode initialization, open roscore, and open the simulation interface
 
-* 点击对应按钮进入不同模块
+* Click the corresponding button to enter different modules
 
-### 主动控制界面
+### Active control interface
 
-* 通过前端界面按钮、键盘、手柄调用`qnode`的`sendMoveMsg(x,y,z),sendArmMsg()`函数向话题 /fight_with_hair/basic_move/vel  发送运动指令，控制机器人运动
-* 键盘
-  * Q——左前
-  * W——前
-  * E——右前
-  * A——左
-  * S——停止
-  * D——右
-  * Z——左后
-  * X——后
-  * C——右后
-  * I——机械臂向上
-  * K——机械臂向下
-  * J——机械臂抓取
-  * L——机械臂释放
+* Call the `sendMoveMsg(x,y,z),sendArmMsg()` function of `qnode` through the front-end interface buttons, keyboard and handle to send motion instructions to the topic /fight_with_hair/basic_move/vel to control the robot movement
+* Keyboard
+  * Q——Left front
+  * W——Front
+  * E——front right
+  * A——Left
+  * S——Stop
+  * D——right
+  * Z-rear left
+  * X——After
+  * C-rear right
+  * I——Robot arm up
+  * K-Robot arm down
+  * J——Robot grabbing
+  * L——Robot release
 
-### 目标检测及抓取界面
+### Target detection and capture interface
 
-* 通过前端界面显示机器人实时扫描结果，通过按钮返回抓取目标
-* 点击开始检测按钮，调用`qnode`的`sendObjSigMsg()`函数向/fight_with_hair/uito/obj_begin发送目标检测开始的消息
-* 选择抓取物品编号，并点击抓取物品按钮，调用`qnode`的`sendObjDetectMsg()`函数向/fight_with_hair/uito/obj_jar发送用户选择需要抓取的物品编号
+* Display the real-time scanning results of the robot through the front-end interface, and return to the capture target through the button
+* Click the start detection button and call the `sendObjSigMsg()` function of `qnode` to send a message that the target detection starts to /fight_with_hair/uito/obj_begin
+* Select the item number to be grabbed and click the item button to call the `sendObjDetectMsg()` function of `qnode` to send the item number selected by the user to /fight_with_hair/uito/obj_jar
 
-### 语音识别功能
+### Voice recognition function
 
-* 点击开始语音识别按钮开始语音识别
+* Click the Start Voice Recognition button to start voice recognition
 
-### 自主跟随界面
+### Follow the interface autonomously
 
-* 打开界面则机器人自动开始跟随
-* 点击停止跟随按钮调用`qnode`的`sendFollowEndMsg()`函数向话题/fight_with_hair/uito/follow_stop发送跟随结束消息
+* Open the interface and the robot will automatically start following
+* Click the stop following button to call the `sendFollowEndMsg()` function of `qnode` to send a follow end message to the topic/fight_with_hair/uito/follow_stop
 
-* 点击开始跟随按钮调用`qnode`的`sendFollowBeginMsg()`函数向话题/fight_with_hair/uito/follow_begin发送重新开始跟随消息
+* Click the start follow button to call the `sendFollowBeginMsg()` function of `qnode` to send a restart message to the topic /fight_with_hair/uito/follow_begin
 
-### 扫描并建图界面
+### Scan and map interface
 
-* 点击开始建图界面开始建图，前端实时反馈地图建立情况
-* 输入地图文件名，点击保存地图
-  * 默认路径 `工作空间/src/navi/maps/mapname.yaml`
-  * 保存格式`mapname.yaml`和`mapname.pgm`
+* Click the start map creation interface to start map creation, and the front-end will feedback the map creation status in real time
+* Enter the map file name, click to save the map
+  * The default path `workspace/src/navi/maps/mapname.yaml`
+  * Save format `mapname.yaml` and `mapname.pgm`
 
-### 导航界面
+### Navigation interface
 
-* 点击选择地图按钮选择地图，只能选择yaml格式地图，地图在 `工作空间/src/navi/maps/`目录下
-* 点击加载地图按钮加载选择的地图
-  * 若未选择地图，默认加载 `工作空间/src/navi/maps/map.yaml`
-  * 同时加载`工作空间/src/navi/waypoints/`目录下对应名称的xml格式路径点文件
-  * 若机器人未在地图中显示，可能是由于卡顿原因，重新加载地图即可
-* 点击选择目标点按钮，选择导航点，选择完毕直接进行单点自主导航
-* 点击选择路径点按钮，选择路径点，路径点显示在地图上
-* 点击开始巡航，机器人根据路径点自主规划路径并开始巡航
-* 点击保存路径点，保存所有路径点
-  * 默认路径`工作空间/src/navi/waypoints/mapname.xml`
-
+* Click the select map button to select a map, only the yaml format map can be selected, and the map is in the `workspace/src/navi/maps/` directory
+* Click the Load Map button to load the selected map
+  * If no map is selected, `workspace/src/navi/maps/map.yaml` will be loaded by default
+  * At the same time load the xml format path point file with the corresponding name in the `workspace/src/navi/waypoints/` directory
+  * If the robot is not displayed on the map, it may be due to a freeze, just reload the map
+* Click the button to select the target point, select the navigation point, and proceed directly to the single-point autonomous navigation after the selection is completed
+* Click the Select Waypoint button to select the waypoint, and the waypoint will be displayed on the map
+* Click to start cruising, the robot will autonomously plan the path according to the waypoints and start cruising
+* Click Save waypoints to save all waypoints
+  * The default path `workspace/src/navi/waypoints/mapname.xml`

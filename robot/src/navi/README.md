@@ -1,77 +1,77 @@
 # navigation package
 
-## 概况
+## Overview
 
-* 导航功能包，实现机器人自主导航功能。
-  * 支持自定义路径
-  * 支持预设路径导航
-  * 支持即时路径导航
-  * 支持动态避障功能
-* 路径选取：通过话题`/waterplus/save_waypoints`传递路径点信息
-* 导航运动：通过话题`/fight_with_hair/basic_move/vel`向基础运动模块发送运动指令
+* Navigation function package to realize the autonomous navigation function of the robot.
+  * Support custom path
+  * Support preset path navigation
+  * Support real-time route navigation
+  * Support dynamic obstacle avoidance function
+* Path selection: pass the waypoint information through the topic `/waterplus/save_waypoints`
+* Navigation movement: send movement instructions to the basic movement module through the topic `/fight_with_hair/basic_move/vel`
 
-## 使用方法
+## Instructions
 
-### 预设路径
+### Default path
 
-* 加载地图文件以供标记
+* Load map file for marking
 
   ```shell
   roslaunch navi add_waypoint.launch
   ```
 
-* 在RViz中使用`Add Waypoint`选择路径点
+* Use `Add Waypoint` to select waypoints in RViz
 
-* 保存路径点文件
+* Save path point file
 
   ```shell
   rosrun navi way_saver /path/to/the/waypoint/file
   ```
 
-  > 路径点文件默认命名为`waypoints.xml`
+  > The path point file is named `waypoints.xml` by default
 
-### 虚拟仿真
+### virtual reality
 
-* 开启导航功能
+* Turn on the navigation function
 
   ```shell
   roslaunch navi navi_sim.launch
   ```
 
-* 添加途径点
+* Add way point
 
-  * 使用RViz工具栏中的`Add Waypoint`添加导航点
+  * Use `Add Waypoint` in the RViz toolbar to add navigation points
   
-    > 注：如果没有可点击工具栏**最右侧**的加号选择
+    > Note: If there is no option, click the plus sign on the rightmost side of the toolbar to select
 
-  * 设置好任一导航点后机器人**立即**开始运动
+  * After setting any navigation point, the robot **immediately** starts to move
 
-    > 如果希望机器人在**特定时间**才开始移动，注释掉launch文件中以下行。
+    > If you want the robot to start moving at a **specific time**, comment out the following line in the launch file.
   >
     > ```xml
   > <node name="wp_nav_test" pkg="waterplus_map_tools" type="wp_nav_test"/>
     > ```
     >
   
-* 开始巡航
+* Start cruise
 
   ```shell
   rosrun waterplus_map_tools wp_nav_test
   ```
 
-  > 在机器人运动过程中可以继续添加导航点，将会按顺序逐一规划路径。
+  > You can continue to add navigation points while the robot is moving, and the path will be planned one by one in order.
 
-### 真机运行
+### Real machine operation
 
-和虚拟仿真基本相同，差异仅在调用的launch文件上。
+It is basically the same as virtual simulation, the difference is only in the called launch file.
 
 ```shell
 roslaunch navi navi_gen.launch
 ```
 
-## 注意事项
+## Precautions
 
-* 若gazebo仿真时场景显示不全，很有可能是`wpb_sim/worlds`文件夹下的场景文件出现了路径问题，修改文件中`<geometry>`下`<mesh>`标签路径即可。
+* If the scene is not displayed completely during gazebo simulation, it is very likely that the scene file in the `wpb_sim/worlds` folder has a path problem, just modify the file path under the `<geometry>` label `<mesh>`.
 
   ```xml
   <geometry>
@@ -81,15 +81,15 @@ roslaunch navi navi_gen.launch
   </geometry>
   ```
 
-* 初次运行时可能出现雷达包缺失的情况，需要在本机ROS中安装雷达依赖包。
+* The radar package may be missing during the first run, and the radar dependency package needs to be installed in the native ROS.
 
   ```shell
   sudo apt-get install ros-kinetic-rplidar-ros
   ```
 
 
-## 开源包依赖
+## Open source package dependency
 
-* `waterplus_map_tools`：提供灵活的自定义地图导航工具
-* `wpb_home`：提供机器人所需驱动和配置文件
-* `wpb_sim`：提供机器人仿真环境
+* `waterplus_map_tools`: Provide flexible custom map navigation tools
+* `wpb_home`: Provide drivers and configuration files required by the robot
+* `wpb_sim`: Provide a robot simulation environment

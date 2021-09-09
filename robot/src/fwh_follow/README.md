@@ -1,30 +1,29 @@
 ## fwh_follow
 
-本软件包为跟随模块，主要包括一个cpp源文件：
+This software package is a follow-up module, which mainly includes a cpp source file:
 
-- `fwh_follow_yz`，用于控制跟随功能包的启动与暂停
+-`fwh_follow_yz`, used to control the start and pause of the follow function package
 
-### 介绍
+### introduce
 
-- #### fwh_follow
+-#### fwh_follow
 
-  打开该模块即可启动跟随功能，跟随距离默认为0.6m，用户可通过前端进行控制，使跟随功能暂停或者继续。启动信号通过`/fight_with_hair/uito/follow_begin`传递给模块，消息类型是UInt32，用于暂停后继续跟随；暂停信号通过`/fight_with_hair/uito/follow_stop`传递给模块，消息类型是UInt32，用于暂停跟随。
+   Turn on the module to start the follow function. The follow distance defaults to 0.6m. The user can control the follow function through the front end to pause or continue the follow function. The start signal is passed to the module through `/fight_with_hair/uito/follow_begin`, the message type is UInt32, which is used to continue following after a pause; the pause signal is passed to the module through `/fight_with_hair/uito/follow_stop`, the message type is UInt32, which is used to pause follow.
 
-### 使用方法
+### Instructions
 
-直接启动launch文件。
+Start the launch file directly.
 
 ```sh
 $ roslaunch fwh_follow fwh_follow_l.launch
 ```
 
-前端进行测试时只需要启动testlaunch文件。
+Only need to start the testlaunch file when the front-end tests.
 
 ```sh
 $ roslaunch fwh_follow fwh_follow_t.launch
 ```
 
-### 注意事项
+### Precautions
 
-需要配备好kinect2驱动文件
-
+Need to be equipped with kinect2 driver file

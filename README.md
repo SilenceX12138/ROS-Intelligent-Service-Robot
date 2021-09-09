@@ -1,16 +1,11 @@
 # ROS Service Robot Project
 
-## 仓库概况
+## Warehouse Overview
 
-* `robot`：存放了开发源代码，每个模块内都有对应的README文件供参考。
+* `robot`: The development source code is stored, and each module has a corresponding README file for reference.
 
-  > 如果想要直接运行项目图形化界面，可以参考ui模块的[README](https://gitlab.buaaoo.top/2021_embedded_software/wed-team08-proj/tree/master/robot/src/fight_with_hair_ui).
+  > If you want to run the project graphical interface directly, you can refer to the [README](https://gitlab.buaaoo.top/2021_embedded_software/wed-team08-proj/tree/master/robot/src/fight_with_hair_ui) of the ui module .
 
-* `开发文档`：存放了各个开发阶段的目标和总结
-
-* `答辩材料`：存放了历次答辩所用的展示文档
-
-* `需求实现情况`：项目所实现的功能总览
 
 ## Milestones
 

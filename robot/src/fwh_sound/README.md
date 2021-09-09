@@ -1,26 +1,25 @@
 ## fwh_sound
 
-本软件包为语音识别模块，主要包括一个cpp源文件：
+This software package is a speech recognition module, which mainly includes a cpp source file:
 
-- `fwh_sound_yz.cpp`，用于进行语音指令识别
+-`fwh_sound_yz.cpp`, used for voice command recognition
 
-### 介绍
+### introduce
 
-- #### fwh_sound
+-#### fwh_sound
 
-  打开该模块即可启动语音识别功能，支持的语音指令包括目标识别（`obj`）、导航（`navi`）、控制（`mani`）、跟随（`follow`）以及建图（`build`），该模块将识别到的指令通过`/fight_with_hair/toui/sound_ins`以字符串的形式发送给前端，前端在相应指令执行完毕后通过`fight_with_hair/uito/state_sound`发送给该模块一个结束信号，表示允许语音识别传递下一条指令。
+   Turn on the module to start the voice recognition function. The supported voice commands include target recognition (`obj`), navigation (`navi`), control (`mani`), follow (`follow`), and map (`build`) ), the module sends the recognized command to the front end in the form of a string through `/fight_with_hair/toui/sound_ins`, and the front end sends an end signal to the module through `fight_with_hair/uito/state_sound` after the corresponding command is executed. Indicates that voice recognition is allowed to pass the next instruction.
 
-### 使用方法
+### Instructions
 
-直接启动launch文件。
+Start the launch file directly.
 
 ```sh
 $ roslaunch fwh_sound fwh_sound_l.launch
 ```
 
-前端进行测试时只需要启动testlaunch文件。
+Only need to start the testlaunch file when the front-end tests.
 
 ```sh
 $ roslaunch fwh_sound fwh_sound_t.launch
 ```
-

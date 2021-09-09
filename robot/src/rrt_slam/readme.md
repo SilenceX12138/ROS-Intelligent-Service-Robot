@@ -1,31 +1,31 @@
 # fight_with_hair_rrt_slam
 
-RRT_SLAM自动建图功能包，本包包含以下内容：
+RRT_SLAM automatic mapping function package, this package contains the following contents:
 
 
 
-### gmapping线上仿真运行方法
+### Gmapping online simulation running method
 
 ```sh
 $ roslaunch rrt_slam rrt_slam_sim.launch
 ```
 
-使用Publish Point设置五个目标地点以后（最好是四个成矩形，一个在机器人附近）使用2D Nav Goal给机器人指出移动方向。
+After using Publish Point to set five target locations (preferably four in a rectangle and one near the robot), use 2D Nav Goal to point out the direction of movement of the robot.
 
-在建立地图完成之后，可以调用`map_server`服务保存建立的地图
+After the map is created, you can call the `map_server` service to save the created map
 
 ```sh
 $ rosrun map_server map_saver -f map
 ```
 
-`-f`参数决定保存地图的名称，地图保存形式为`map.yaml和map.pgm`形式保存路径为运行该命令行的路径
+The `-f` parameter determines the name of the saved map, the map save format is `map.yaml and map.pgm` The save path is the path to run the command line
 
-### gmapping真机运行方法
+### How to run gmapping on real machine
 
 ```sh
 $ roslaunch rrt_slam rrt_slam.launch
 ```
 
-在真实上机时，选择该方法，来运行建图模块
+In the real computer, select this method to run the mapping module
 
-使用Publish Point设置五个目标地点以后（最好是四个成矩形，一个在机器人附近）使用2D Nav Goal给机器人指出移动方向。
+After using Publish Point to set five target locations (preferably four in a rectangle and one near the robot), use 2D Nav Goal to point out the direction of movement of the robot.
