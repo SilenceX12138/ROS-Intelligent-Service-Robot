@@ -43,3 +43,7 @@ This part records all our trace of this project.
 * Please refer to **Wiki**
 
   ![image-20210909104239214](https://i.loli.net/2021/09/09/Q3bxIVnETrqmW96.png)
+
+## Reference
+
+* BUAA Software Engineering Course, Autumn 2021.
