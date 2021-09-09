@@ -46,4 +46,4 @@ This part records all our trace of this project.
 
 ## Reference
 
-* BUAA Software Engineering Course, Autumn 2021.
+* BUAA Software Engineering Course, Spring 2021.
