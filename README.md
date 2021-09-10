@@ -18,7 +18,7 @@
 	* [slam](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/slam): SLAM mapping function package
 	* [user_listen](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/user_listen): software package monitors the user_listen module for users
 	
-	> If you want to run the project graphical interface directly, you can refer to the [README](https://gitlab.buaaoo.top/2021_embedded_software/wed-team08-proj/tree/master/robot/src/fight_with_hair_ui) of the ui module .
+	> If you want to run the project graphical interface directly, you can refer to the [README](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/fight_with_hair_ui) of the ui module .
 
 ## Milestones
 
