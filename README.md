@@ -6,7 +6,7 @@
 
 * `robot`: The development source code is stored, and each module has a corresponding README file for reference.
 
-  * [arm](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/arm): a mobile arm module of a robotic arm
+  	* [arm](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/arm): a mobile arm module of a robotic arm
 	* [basic](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/basic): basic functions module
 	* [drivers](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/drivers): device drivers
 	* [fight_with_hair_ui](https://github.com/SilenceX12138/ROS-Intelligent-Service-Robot/tree/master/robot/src/fight_with_hair_ui): frontend module
